@@ -1,0 +1,545 @@
+{% extends "base.html" %}
+
+{% block title %}Register Student - Smart Attendance System{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>
+                <i class="fas fa-user-plus me-2"></i>Register New Student
+            </h1>
+            <a href="{{ url_for('students') }}" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-1"></i>Back to Students
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-user-plus me-2"></i>Student Registration Form
+                </h5>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data" id="studentForm">
+                    <!-- Basic Information -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-user me-2"></i>Basic Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="student_id" class="form-label fw-bold">Student ID *</label>
+                            <input type="text" class="form-control" id="student_id" name="student_id" 
+                                   value="{{ data.student_id if data else '' }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label fw-bold">Full Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" 
+                                   value="{{ data.name if data else '' }}" 
+                                   placeholder="Enter full name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="roll_number" class="form-label fw-bold">Roll Number</label>
+                            <input type="text" class="form-control" id="roll_number" name="roll_number" 
+                                   value="{{ data.roll_number if data else '' }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Information -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-envelope me-2"></i>Contact Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label fw-bold">Email Address *</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="{{ data.email if data else '' }}" 
+                                   placeholder="student@example.com" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label fw-bold">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                   value="{{ data.phone if data else '' }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Academic Information -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-graduation-cap me-2"></i>Academic Information
+                            </h6>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="department" class="form-label fw-bold">Department *</label>
+                            <select class="form-select" id="department" name="department" required>
+                                <option value="" disabled selected style="display: none;">Choose Department</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Electronics & Communication">Electronics & Communication</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Civil Engineering">Civil Engineering</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="course" class="form-label fw-bold">Course *</label>
+                            <select class="form-select" id="course" name="course" required>
+                                <option value="" disabled selected style="display: none;">Choose Course</option>
+                                <option value="B.Tech">B.Tech</option>
+                                <option value="M.Tech">M.Tech</option>
+                                <option value="BCA">BCA</option>
+                                <option value="MCA">MCA</option>
+                                <option value="B.Sc">B.Sc</option>
+                                <option value="M.Sc">M.Sc</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="year" class="form-label fw-bold">Year *</label>
+                            <select class="form-select" id="year" name="year" required>
+                                <option value="" disabled selected style="display: none;">Choose Year</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                                <option value="3rd Year">3rd Year</option>
+                                <option value="4th Year">4th Year</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="section" class="form-label fw-bold">Section *</label>
+                            <input type="text" class="form-control text-uppercase" id="section" name="section" 
+                                   value="{{ data.section if data else '' }}" 
+                                   maxlength="3" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="semester" class="form-label fw-bold">Semester</label>
+                            <select class="form-select" id="semester" name="semester">
+                                <option value="" disabled selected style="display: none;">Choose Semester</option>
+                                <option value="1st Sem">1st Sem</option>
+                                <option value="2nd Sem">2nd Sem</option>
+                                <option value="3rd Sem">3rd Sem</option>
+                                <option value="4th Sem">4th Sem</option>
+                                <option value="5th Sem">5th Sem</option>
+                                <option value="6th Sem">6th Sem</option>
+                                <option value="7th Sem">7th Sem</option>
+                                <option value="8th Sem">8th Sem</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="batch" class="form-label fw-bold">Batch Year</label>
+                            <input type="text" class="form-control" id="batch" name="batch" 
+                                   value="{{ data.batch if data else '' }}">
+                        </div>
+                    </div>
+                    
+                    <!-- Photo Upload/Capture -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <h6 class="text-muted mb-3">
+                                <i class="fas fa-camera me-2"></i>Student Photo
+                            </h6>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Upload Photo Button -->
+                            <div class="mb-3">
+                                <label for="image" class="form-label fw-bold">Upload Photo</label>
+                                <input type="file" class="form-control" id="image" name="image" 
+                                       accept="image/*">
+                                <div class="form-text">
+                                    <i class="fas fa-info-circle me-1"></i>
+                                    Clear, well-lit photo with visible face (JPG, PNG, GIF)
+                                </div>
+                            </div>
+                            
+                            <!-- Take Photo Button -->
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Take Photo</label>
+                                <div class="d-grid">
+                                    <button type="button" class="btn btn-success" id="takePhotoBtn">
+                                        <i class="fas fa-camera me-1"></i>Take Photo with Camera
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Camera Section (Hidden by default) -->
+                            <div id="cameraSection" style="display: none;">
+                                <video id="cameraVideo" width="300" height="225" autoplay class="border rounded mb-2"></video>
+                                <canvas id="captureCanvas" width="300" height="225" style="display: none;"></canvas>
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-primary" id="capturePhoto">
+                                        <i class="fas fa-camera me-1"></i>Capture Photo
+                                    </button>
+                                    <button type="button" class="btn btn-warning" id="retakePhoto" style="display: none;">
+                                        <i class="fas fa-redo me-1"></i>Retake Photo
+                                    </button>
+                                    <button type="button" class="btn btn-secondary" id="stopCamera">
+                                        <i class="fas fa-stop me-1"></i>Stop Camera
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- Photo Preview -->
+                            <div id="imagePreview" style="display: none;">
+                                <label class="form-label fw-bold">Preview</label>
+                                <div class="text-center">
+                                    <img id="previewImg" src="" alt="Preview" 
+                                         class="img-thumbnail border-primary" 
+                                         style="max-width: 200px; max-height: 200px;">
+                                </div>
+                            </div>
+                            
+                            <!-- Photo Guidelines -->
+                            <div class="alert alert-info">
+                                <h6><i class="fas fa-lightbulb me-2"></i>Photo Tips:</h6>
+                                <ul class="mb-0 small">
+                                    <li>Ensure good lighting</li>
+                                    <li>Face should be centered</li>
+                                    <li>Remove glasses if possible</li>
+                                    <li>Look directly at camera</li>
+                                    <li>Neutral expression works best</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Buttons -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-end gap-2 pt-3 border-top">
+                                <button type="reset" class="btn btn-outline-secondary">
+                                    <i class="fas fa-undo me-1"></i>Reset Form
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">
+                                    <i class="fas fa-user-plus me-1"></i>Register Student
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* Style placeholder options in dropdowns */
+select option[value=""] {
+    color: #6c757d;
+    font-style: italic;
+}
+
+/* Style select when showing placeholder */
+select.placeholder-active {
+    color: #6c757d;
+    font-style: italic;
+}
+
+select:not(.placeholder-active) {
+    color: #212529;
+    font-style: normal;
+}
+
+/* Ensure proper styling for form elements */
+.form-select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Camera section styling */
+#cameraSection {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+#cameraVideo {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+}
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    let stream = null;
+    let capturedImageData = null;
+    
+    // Auto-uppercase section input
+    $('#section').on('input', function() {
+        this.value = this.value.toUpperCase();
+    });
+    
+    // File upload preview
+    $('#image').change(function() {
+        const file = this.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                $('#previewImg').attr('src', e.target.result);
+                $('#imagePreview').show();
+                capturedImageData = null; // Clear captured data
+            };
+            reader.readAsDataURL(file);
+        } else {
+            $('#imagePreview').hide();
+        }
+    });
+    
+    // Take Photo Button
+    $('#takePhotoBtn').click(function() {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            alert('Camera access is not supported in this browser.');
+            return;
+        }
+        
+        navigator.mediaDevices.getUserMedia({ 
+            video: { 
+                width: { ideal: 640 },
+                height: { ideal: 480 },
+                facingMode: 'user'
+            } 
+        })
+        .then(function(mediaStream) {
+            stream = mediaStream;
+            const video = document.getElementById('cameraVideo');
+            video.srcObject = stream;
+            video.play();
+            
+            $('#cameraSection').show();
+            $('#takePhotoBtn').hide();
+        })
+        .catch(function(err) {
+            alert('Error accessing camera: ' + err.message);
+        });
+    });
+    
+    // Capture Photo
+    $('#capturePhoto').click(function() {
+        const video = document.getElementById('cameraVideo');
+        const canvas = document.getElementById('captureCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        const dataURL = canvas.toDataURL('image/jpeg', 0.8);
+        capturedImageData = dataURL;
+        
+        $('#previewImg').attr('src', dataURL);
+        $('#imagePreview').show();
+        
+        $('#capturePhoto').hide();
+        $('#retakePhoto').show();
+        
+        // Clear file input
+        $('#image').val('');
+    });
+    
+    // Retake Photo
+    $('#retakePhoto').click(function() {
+        $('#capturePhoto').show();
+        $('#retakePhoto').hide();
+        $('#imagePreview').hide();
+        capturedImageData = null;
+    });
+    
+    // Stop Camera
+    $('#stopCamera').click(function() {
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+            stream = null;
+        }
+        $('#cameraSection').hide();
+        $('#takePhotoBtn').show();
+        $('#capturePhoto').show();
+        $('#retakePhoto').hide();
+    });
+    
+    // Form validation
+    $('#studentForm').submit(function(e) {
+        let isValid = true;
+        let errors = [];
+        
+        // Check required fields
+        const requiredFields = ['student_id', 'name', 'email', 'department', 'course', 'year', 'section'];
+        requiredFields.forEach(function(field) {
+            const value = $('#' + field).val().trim();
+            if (!value) {
+                const fieldName = field.replace('_', ' ').replace(/\b\w/g, l => l.toUpperCase());
+                errors.push(fieldName + ' is required');
+                $('#' + field).addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#' + field).removeClass('is-invalid');
+            }
+        });
+        
+        // Email validation
+        const email = $('#email').val().trim();
+        if (email && !isValidEmail(email)) {
+            errors.push('Please enter a valid email address');
+            $('#email').addClass('is-invalid');
+            isValid = false;
+        }
+        
+        // Student ID validation
+        const studentId = $('#student_id').val().trim();
+        if (studentId && studentId.length < 3) {
+            errors.push('Student ID must be at least 3 characters long');
+            $('#student_id').addClass('is-invalid');
+            isValid = false;
+        }
+        
+        // Image validation - check for either file upload or captured photo
+        const imageFile = $('#image')[0].files[0];
+        if (!imageFile && !capturedImageData) {
+            errors.push('Student photo is required - either upload a file or take a photo');
+            $('#image').addClass('is-invalid');
+            isValid = false;
+        } else {
+            $('#image').removeClass('is-invalid');
+        }
+        
+        if (!isValid) {
+            e.preventDefault();
+            showErrors(errors);
+            return false;
+        }
+        
+        // Handle captured photo submission
+        if (capturedImageData && !imageFile) {
+            e.preventDefault();
+            
+            // Convert data URL to blob and submit via AJAX
+            const formData = new FormData(this);
+            
+            const dataURLtoBlob = function(dataURL) {
+                const arr = dataURL.split(',');
+                const mime = arr[0].match(/:(.*?);/)[1];
+                const bstr = atob(arr[1]);
+                let n = bstr.length;
+                const u8arr = new Uint8Array(n);
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+                return new Blob([u8arr], { type: mime });
+            };
+            
+            const blob = dataURLtoBlob(capturedImageData);
+            // Remove any existing image file from form data
+            formData.delete('image');
+            // Add the captured photo blob
+            formData.append('image', blob, 'captured_photo.jpg');
+            
+            $('#submitBtn').prop('disabled', true).html(
+                '<i class="fas fa-spinner fa-spin me-1"></i>Registering...'
+            );
+            
+            $.ajax({
+                url: $(this).attr('action') || window.location.pathname,
+                method: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // Check if response contains success message
+                    if (response.includes('success') || response.includes('registered')) {
+                        window.location.href = '/students';
+                    } else {
+                        // If there's an error in the response, show it
+                        $('body').html(response);
+                    }
+                },
+                error: function(xhr) {
+                    let errorMsg = 'Error submitting form. Please try again.';
+                    if (xhr.responseText) {
+                        // Try to extract error message from response
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = xhr.responseText;
+                        const alertElement = tempDiv.querySelector('.alert-danger');
+                        if (alertElement) {
+                            errorMsg = alertElement.textContent.trim();
+                        }
+                    }
+                    alert(errorMsg);
+                    $('#submitBtn').prop('disabled', false).html(
+                        '<i class="fas fa-user-plus me-1"></i>Register Student'
+                    );
+                }
+            });
+            
+            return false;
+        }
+        
+        // Show loading state for file upload
+        $('#submitBtn').prop('disabled', true).html(
+            '<i class="fas fa-spinner fa-spin me-1"></i>Registering...'
+        );
+    });
+    
+    // Remove validation classes on input
+    $('input, select').on('input change', function() {
+        $(this).removeClass('is-invalid');
+    });
+    
+    // Enhanced placeholder behavior for dropdowns
+    $('select').each(function() {
+        const $select = $(this);
+        if ($select.val() === '') {
+            $select.addClass('placeholder-active');
+        }
+        
+        $select.on('change', function() {
+            if ($(this).val() === '') {
+                $(this).addClass('placeholder-active');
+            } else {
+                $(this).removeClass('placeholder-active');
+            }
+        });
+    });
+    
+    // Cleanup on page unload
+    $(window).on('beforeunload', function() {
+        if (stream) {
+            stream.getTracks().forEach(track => track.stop());
+        }
+    });
+});
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showErrors(errors) {
+    let errorHtml = '<div class="alert alert-danger alert-dismissible fade show" role="alert">';
+    errorHtml += '<h6>Please fix the following errors:</h6>';
+    errorHtml += '<ul class="mb-0">';
+    errors.forEach(function(error) {
+        errorHtml += '<li>' + error + '</li>';
+    });
+    errorHtml += '</ul>';
+    errorHtml += '<button type="button" class="btn-close" data-bs-dismiss="alert"></button>';
+    errorHtml += '</div>';
+    
+    // Remove existing alerts
+    $('.alert-danger').remove();
+    
+    // Add new alert
+    $('.card-body').prepend(errorHtml);
+    
+    // Scroll to top
+    $('html, body').animate({scrollTop: 0}, 500);
+}
+</script>
+{% endblock %}

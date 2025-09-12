@@ -1,0 +1,228 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Smart Attendance System{% endblock %}
+
+{% block content %}
+<!-- 🎨 PREMIUM DASHBOARD HEADER -->
+<div class="row mb-5">
+    <div class="col-12 text-center">
+        <div class="fade-in-up">
+            <h1 class="display-4 gradient-text mb-3 floating">
+                <i class="fas fa-tachometer-alt me-3"></i>Smart Dashboard
+            </h1>
+            <p class="lead text-white-50 mb-4">Real-time attendance monitoring with AI-powered face recognition</p>
+            <div class="d-flex justify-content-center gap-3">
+                <span class="badge bg-success pulse-animation">
+                    <i class="fas fa-robot me-1"></i>AI Powered
+                </span>
+                <span class="badge bg-primary pulse-animation">
+                    <i class="fas fa-eye me-1"></i>Real-time
+                </span>
+                <span class="badge bg-warning pulse-animation">
+                    <i class="fas fa-shield-alt me-1"></i>Secure
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🎨 PREMIUM STATISTICS CARDS -->
+<div class="row mb-5">
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card glass glow-effect fade-in-up" style="animation-delay: 0.1s;">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+                         style="width: 80px; height: 80px; background: var(--primary-gradient);">
+                        <i class="fas fa-users fa-2x text-white"></i>
+                    </div>
+                </div>
+                <h2 class="display-6 fw-bold gradient-text mb-2">{{ total_students }}</h2>
+                <p class="text-muted mb-0 fw-semibold">Total Students</p>
+                <div class="mt-3">
+                    <span class="badge bg-primary">
+                        <i class="fas fa-arrow-up me-1"></i>Active
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card glass glow-effect fade-in-up" style="animation-delay: 0.2s;">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+                         style="width: 80px; height: 80px; background: var(--success-gradient);">
+                        <i class="fas fa-check-circle fa-2x text-white"></i>
+                    </div>
+                </div>
+                <h2 class="display-6 fw-bold gradient-text mb-2">{{ today_attendance }}</h2>
+                <p class="text-muted mb-0 fw-semibold">Today's Present</p>
+                <div class="mt-3">
+                    <span class="badge bg-success">
+                        <i class="fas fa-calendar-check me-1"></i>Today
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card glass glow-effect fade-in-up" style="animation-delay: 0.3s;">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+                         style="width: 80px; height: 80px; background: var(--warning-gradient);">
+                        <i class="fas fa-percentage fa-2x text-white"></i>
+                    </div>
+                </div>
+                <h2 class="display-6 fw-bold gradient-text mb-2" id="attendance-percentage">0%</h2>
+                <p class="text-muted mb-0 fw-semibold">Attendance Rate</p>
+                <div class="mt-3">
+                    <span class="badge bg-warning">
+                        <i class="fas fa-chart-line me-1"></i>Live
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card glass glow-effect fade-in-up" style="animation-delay: 0.4s;">
+            <div class="card-body text-center p-4">
+                <div class="mb-3">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" 
+                         style="width: 80px; height: 80px; background: var(--danger-gradient);">
+                        <i class="fas fa-calendar fa-2x text-white"></i>
+                    </div>
+                </div>
+                <h2 class="display-6 fw-bold gradient-text mb-2">{{ datetime.now().strftime('%d') }}</h2>
+                <p class="text-muted mb-0 fw-semibold">{{ datetime.now().strftime('%B %Y') }}</p>
+                <div class="mt-3">
+                    <span class="badge bg-danger">
+                        <i class="fas fa-clock me-1"></i>{{ datetime.now().strftime('%H:%M') }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="fas fa-bolt me-2"></i>Quick Actions
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('register_student') }}" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-user-plus me-2"></i>Register Student
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('mark_attendance') }}" class="btn btn-success btn-lg w-100">
+                            <i class="fas fa-camera me-2"></i>Mark Attendance
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('attendance') }}" class="btn btn-info btn-lg w-100">
+                            <i class="fas fa-list me-2"></i>View Records
+                        </a>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <a href="{{ url_for('reports') }}" class="btn btn-warning btn-lg w-100">
+                            <i class="fas fa-chart-bar me-2"></i>Generate Report
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Attendance -->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">
+                    <i class="fas fa-clock me-2"></i>Recent Attendance
+                </h5>
+                <a href="{{ url_for('attendance') }}" class="btn btn-sm btn-outline-primary">View All</a>
+            </div>
+            <div class="card-body">
+                {% if recent_records %}
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Student ID</th>
+                                    <th>Name</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Status</th>
+                                    <th>Confidence</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for record in recent_records %}
+                                <tr>
+                                    <td>{{ record.student.student_id if record.student else 'N/A' }}</td>
+                                    <td>{{ record.student.name if record.student else 'N/A' }}</td>
+                                    <td>{{ record.date.strftime('%Y-%m-%d') if record.date else 'N/A' }}</td>
+                                    <td>{{ record.time_in.strftime('%H:%M:%S') if record.time_in else 'N/A' }}</td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if record.status == 'Present' else 'warning' if record.status == 'Late' else 'danger' }}">
+                                            {{ record.status }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        {% if record.confidence_score %}
+                                            {{ "%.2f"|format(record.confidence_score) }}
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-4">
+                        <i class="fas fa-inbox fa-3x text-muted mb-3"></i>
+                        <p class="text-muted">No attendance records found</p>
+                        <a href="{{ url_for('mark_attendance') }}" class="btn btn-primary">
+                            Start Marking Attendance
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Load attendance summary
+    $.get('/api/attendance_summary', function(data) {
+        if (data.present_percentage !== undefined) {
+            $('#attendance-percentage').text(data.present_percentage + '%');
+        }
+    });
+    
+    // Auto-refresh every 30 seconds
+    setInterval(function() {
+        location.reload();
+    }, 30000);
+});
+</script>
+{% endblock %}
