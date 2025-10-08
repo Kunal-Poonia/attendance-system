@@ -1435,3 +1435,66 @@
 2025-09-10 12:25:49,553 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 12:25:49] "GET /attendance?date=2025-09-10&department=&course=&year=&section=&subject= HTTP/1.1" 200 -
 2025-09-10 12:25:49,584 - werkzeug - INFO - 127.0.0.1 - - [10/Sep/2025 12:25:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-09-10 12:47:44,074 - simple_camera - INFO - Camera stopped successfully
+2025-09-13 23:11:53,573 - utils.helpers - INFO - Directory created/verified: static/uploads
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: static/css
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: static/js
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: static/images
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: student_images
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: exports
+2025-09-13 23:11:53,574 - utils.helpers - INFO - Directory created/verified: database
+2025-09-13 23:11:53,575 - utils.helpers - INFO - Directory created/verified: logs
+2025-09-13 23:11:53,581 - __main__ - INFO - Database tables created
+2025-09-13 23:11:53,768 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://10.154.110.148:5000
+2025-09-13 23:11:53,768 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-09-13 23:11:53,769 - werkzeug - INFO -  * Restarting with stat
+2025-09-13 23:11:54,607 - utils.helpers - INFO - Directory created/verified: static/uploads
+2025-09-13 23:11:54,607 - utils.helpers - INFO - Directory created/verified: static/css
+2025-09-13 23:11:54,607 - utils.helpers - INFO - Directory created/verified: static/js
+2025-09-13 23:11:54,608 - utils.helpers - INFO - Directory created/verified: static/images
+2025-09-13 23:11:54,608 - utils.helpers - INFO - Directory created/verified: student_images
+2025-09-13 23:11:54,609 - utils.helpers - INFO - Directory created/verified: exports
+2025-09-13 23:11:54,609 - utils.helpers - INFO - Directory created/verified: database
+2025-09-13 23:11:54,609 - utils.helpers - INFO - Directory created/verified: logs
+2025-09-13 23:11:54,612 - __main__ - INFO - Database tables created
+2025-09-13 23:11:54,644 - werkzeug - WARNING -  * Debugger is active!
+2025-09-13 23:11:54,650 - werkzeug - INFO -  * Debugger PIN: 112-115-534
+2025-09-13 23:12:01,091 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:01] "GET / HTTP/1.1" 200 -
+2025-09-13 23:12:01,650 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:01] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-09-13 23:12:02,515 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:02] "GET /api/attendance_summary HTTP/1.1" 200 -
+2025-09-13 23:12:04,897 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-09-13 23:12:07,833 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:07] "GET / HTTP/1.1" 200 -
+2025-09-13 23:12:07,868 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-13 23:12:07,936 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:07] "GET /api/attendance_summary HTTP/1.1" 200 -
+2025-09-13 23:12:20,998 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:20] "GET / HTTP/1.1" 200 -
+2025-09-13 23:12:21,025 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-13 23:12:21,059 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:21] "GET /api/attendance_summary HTTP/1.1" 200 -
+2025-09-13 23:12:22,958 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:22] "GET /students HTTP/1.1" 200 -
+2025-09-13 23:12:22,984 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:22] "[33mGET /student_images/student_12407649_20250909_171602_WIN_20250909_17_09_38_Pro.jpg HTTP/1.1[0m" 404 -
+2025-09-13 23:12:22,985 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-13 23:12:23,044 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:23] "GET /static/images/default-avatar.svg HTTP/1.1" 200 -
+2025-09-13 23:12:24,184 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:24] "GET /mark_attendance HTTP/1.1" 200 -
+2025-09-13 23:12:24,208 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-09-13 23:12:24,260 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:24] "GET /api/today_attendance HTTP/1.1" 200 -
+2025-09-13 23:12:26,150 - simple_camera - INFO - Camera 0 started successfully
+2025-09-13 23:12:26,151 - __main__ - INFO - Camera started successfully
+2025-09-13 23:12:26,152 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:26] "POST /start_detection HTTP/1.1" 200 -
+2025-09-13 23:12:26,907 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:26] "GET /get_video_feed?1757785346154 HTTP/1.1" 200 -
+2025-09-13 23:12:27,914 - __main__ - INFO - Face recognition started with 1 known faces
+2025-09-13 23:12:27,915 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:27] "POST /start_face_recognition HTTP/1.1" 200 -
+2025-09-13 23:12:27,965 - simple_camera - WARNING - Failed to read frame from camera
+2025-09-13 23:12:28,921 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:28] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:29,920 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:29] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:30,925 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:30] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:31,921 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:31] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:32,929 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:32] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:33,921 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:33] "GET /get_detected_faces HTTP/1.1" 200 -
+2025-09-13 23:12:34,788 - simple_camera - INFO - Camera stopped successfully
+2025-09-13 23:12:34,789 - __main__ - INFO - Camera stopped
+2025-09-13 23:12:34,789 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:34] "POST /stop_detection HTTP/1.1" 200 -
+2025-09-13 23:12:35,219 - __main__ - INFO - Face recognition stopped
+2025-09-13 23:12:35,220 - werkzeug - INFO - 127.0.0.1 - - [13/Sep/2025 23:12:35] "POST /stop_face_recognition HTTP/1.1" 200 -
+2025-09-13 23:12:38,164 - simple_camera - INFO - Camera stopped successfully
+2025-09-13 23:12:38,330 - simple_camera - INFO - Camera stopped successfully
